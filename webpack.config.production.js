@@ -8,7 +8,6 @@ const config = require('config');
 module.exports = {
   devtool: 'source-map',
   entry: [
-    'webpack-hot-middleware/client?overlay=false',
     path.join(__dirname, 'src/main.jsx'),
   ],
   output: {
