@@ -25,7 +25,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify(config.NODE_ENV),
       __DEV__: JSON.stringify(config.NODE_ENV),
       AUTH0_CALLBACK_URL: JSON.stringify(config.AUTH0_CALLBACK_URL),
       AUTH0_CLIENT_SECRET: JSON.stringify(config.AUTH0_CLIENT_SECRET),
