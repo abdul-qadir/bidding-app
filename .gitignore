@@ -3,6 +3,6 @@ npm-debug.log
 .DS_Store
 dist
 .idea
-*.env
+.env
 .editorconfig
 .eslintrc
