@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { postBid } from './../../actions/biddingActions';
 import { logoutSuccess } from './../../actions/loginActions';
+import Spinner from '../Spinner';
 import Lightbox from '../lightbox';
 import LightboxModal from '../lightbox/LightboxModal';
 import LightboxTrigger from '../lightbox/LightBoxTrigger';
@@ -92,7 +93,7 @@ class BiddingImage extends Component {
 
   render() {
     if (this.state.loading === true) {
-      return <div className="container" />;
+      return <Spinner />;
     }
     return (
       <div className="container gallery-container">
@@ -101,7 +102,7 @@ class BiddingImage extends Component {
             <div className="col-sm-6 col-md-12">
               {
                 this.state.highlyBiddedItems.map(item => (
-                  <Lightbox className="lightboxHover">
+                  <Lightbox className="lightboxHover" key={item.id}>
                     <LightboxTrigger>
                       <div className="thumbnail">
                         <a className="lightbox" onClick={() => this.updateMainItem(item)}>
@@ -114,7 +115,7 @@ class BiddingImage extends Component {
                       </div>
                     </LightboxTrigger>
                     <LightboxModal>
-                      <div className="details-container" closeLightbox={this.props.closeLightbox}>
+                      <div className="details-container">
                         <div>
                           <img src={`/images/gallery/${this.state.url}`} alt="img" />
                         </div>
@@ -166,7 +167,7 @@ class BiddingImage extends Component {
             <div className="col-sm-6 col-md-12">
               {
                   this.state.remainingItems.map(item => (
-                    <Lightbox className="col-sm-6 col-md-6 lightboxHover">
+                    <Lightbox className="col-sm-6 col-md-6 lightboxHover" key={item.id}>
                       <LightboxTrigger>
                         <div className="thumbnail">
                           <a className="lightbox" onClick={() => this.updateMainItem(item)}>

@@ -78,7 +78,7 @@ class LightboxModal extends Component {
 }
 
 LightboxModal.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape({})),
+  children: PropTypes.arrayOf(PropTypes.shape()),
   data: PropTypes.shape({}),
   closeLightbox: PropTypes.func,
   display: PropTypes.bool,

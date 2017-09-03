@@ -5,36 +5,47 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-  bail: true,
   devtool: 'source-map',
   entry: [
+    'webpack-hot-middleware/client?overlay=false',
     path.join(__dirname, 'src/main.jsx'),
   ],
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path: path.join(__dirname, '/dist'),
+    filename: '[name].js',
     publicPath: '/',
-    filename: '[name]-[hash].min.js',
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.tpl.html',
+      inject: 'body',
+      filename: 'index.html',
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      __DEV__: JSON.stringify(process.env.NODE_ENV),
+    }),
+    new ExtractTextPlugin('css/[name]-[hash].min.css'),
+  ],
+  eslint: {
+    configFile: path.join(__dirname, '.eslintrc'),
   },
   module: {
-    preLoaders: [
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   loader: 'eslint',
-      //   include: path.join(__dirname, 'src'),
-      // }
-    ],
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        include: path.join(__dirname, 'src'),
+        exclude: /node_modules/,
         loader: 'babel-loader',
       },
       {
         test: /\.json?$/,
         loader: 'json',
+      },
+      {
+        test: /\.xml$/,
+        loader: 'xml-loader',
       },
       {
         test: /\.css$/,
@@ -52,10 +63,14 @@ module.exports = {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
         loader: 'file',
         query: {
-          name: 'images/[name].[ext]',
+          name: 'static/images/[name].[ext]',
         },
       },
     ],
+  },
+  _hotPort: 8000,
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
   },
   postcss: () => (
     [
@@ -69,44 +84,4 @@ module.exports = {
       }),
     ]
   ),
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.tpl.html',
-      inject: 'body',
-      filename: 'index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      __DEV__: JSON.stringify(false),
-      CONTENTFUL_SPACEID: JSON.stringify(process.env.CONTENTFUL_SPACEID),
-      CONTENTFUL_TOKEN: JSON.stringify(process.env.CONTENTFUL_TOKEN),
-    }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-      },
-      mangle: {
-        screw_ie8: true,
-      },
-      output: {
-        comments: false,
-        screw_ie8: true,
-      },
-    }),
-    new ExtractTextPlugin('css/[name]-[hash].min.css'),
-  ],
 };
