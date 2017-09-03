@@ -6,8 +6,8 @@ class AuthService {
   constructor() {
       // Configure Auth0
     this.auth0 = new Auth0({
-      clientID: 'E5fc9AXY9Qv2et6jNHgZ-Gjl2yJV3orj',
-      domain: 'bidding-app.auth0.com',
+      clientID: AUTH0_CLIENT_ID,
+      domain: AUTH_DOMAIN,
       responseType: 'token',
       callbackURL: `${window.location.origin}/login`,
     });

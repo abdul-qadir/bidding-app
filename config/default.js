@@ -1,6 +1,4 @@
-/**
- * Created by sandeepkumar on 16/05/17.
- */
+
 require('dotenv').config(); // eslint-disable-line import/no-extraneous-dependencies
 const path = require('path');
 
@@ -20,4 +18,5 @@ module.exports = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
   AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET,
   AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+  AUTH_DOMAIN: process.env.AUTH_DOMAIN,
 };
