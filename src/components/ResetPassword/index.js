@@ -40,7 +40,7 @@ class ResetPassword extends Component {
 
   doResetPassword() {
     AuthService.resetPassword(this.getAuthParams(), (err) => {
-      if (err) alert(err.message);
+      if (err) console.log(err.message);
     });
   }
 
