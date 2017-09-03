@@ -6,7 +6,7 @@
   },
   "description": "Bidding Application",
   "main": "src/main.jsx",
-  "homepage": "https://gsit-conn-connect.herokuapp.com/",
+  "homepage": "https://bidding-app-aq.herokuapp.com/",
   "author": "Appirio",
   "license": "MIT",
   "scripts": {
