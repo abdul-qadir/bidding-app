@@ -2,7 +2,7 @@
   "name": "Bidding_Application",
   "version": "0.0.1",
   "engines": {
-    "node": "6.5.0"
+    "node": "8.1.4"
   },
   "description": "Bidding Application",
   "main": "src/main.jsx",
