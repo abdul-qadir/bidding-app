@@ -1,0 +1,16 @@
+export default {
+  TOGGLE_SIDEBAR: 'toggle sidebar',
+  TOGGLE_FAVORITES: 'toggle local links',
+  TOGGLE_LOCAL_LINKS: 'toggle favorites',
+  TOGGLE_SEARCH: 'toggle search',
+  SCREEN_RESIZE: 'screen resize',
+  TOGGLE_LOCATION_DROPDOWN: 'toggle dropdown location',
+  TOGGLE_SITE_SETTINGS: 'toggle site settings',
+  TOGGLE_ALERT_NOTIFICATION: 'toggle alert notification',
+  TOGGLE_QUICK_LOOK: 'toggle quick look',
+  TOGGLE_FEED_PREVIEW: 'toggle feed preview',
+  TOGGLE_ARTICLE_PREVIEW: 'toggle article preview',
+  TOGGLE_GREY_COLUMN: 'toggle grey column',
+  TOGGLE_SLIDE_GREY_COLUMN: 'toggle slide grey column',
+  TOGGLE_ACTIVE_TABLE_VIEW: 'toggle slide grey column',
+};

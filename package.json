@@ -1,0 +1,167 @@
+{
+  "name": "Bidding_Application",
+  "version": "0.0.1",
+  "engines": {
+    "node": "6.5.0"
+  },
+  "description": "Bidding Application",
+  "main": "src/main.jsx",
+  "homepage": "https://gsit-conn-connect.herokuapp.com/",
+  "author": "Appirio",
+  "license": "MIT",
+  "scripts": {
+    "start": "better-npm-run start",
+    "build:start": "better-npm-run build:start",
+    "build": "rimraf dist && better-npm-run build",
+    "postinstall": "npm run build && npm run db:setup",
+    "test": "better-npm-run test",
+    "lint": "./node_modules/.bin/eslint src/**/*.js server/**/*.js",
+    "db:setup": "./node_modules/.bin/knex migrate:latest",
+    "db:rollback": "./node_modules/.bin/knex migrate:rollback"
+  },
+  "standard": {
+    "globals": [
+      "__DEV__"
+    ],
+    "plugins": [
+      "react"
+    ]
+  },
+  "betterScripts": {
+    "start": {
+      "command": "node server.development",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "build": {
+      "command": "webpack --config webpack.config.production.js --progress --profile --colors",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:start": {
+      "command": "node server.production",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "test": {
+      "command": "mocha test/.setup.js src/**/*_Test.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "devDependencies": {
+    "babel-core": "^6.5.2",
+    "babel-eslint": "^7.0.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-plugin-transform-runtime": "^6.5.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "babel-runtime": "^6.5.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.5.1",
+    "eslint": "^3.7.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-import-resolver-webpack": "^0.6.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-flowtype": "2.20.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
+    "file-loader": "^0.9.0",
+    "html-webpack-exclude-assets-plugin": "0.0.3",
+    "ignore-loader": "^0.1.2",
+    "jsx-loader": "^0.13.2",
+    "mocha": "^3.1.2",
+    "react-hot-loader": "^3.0.0-beta.4",
+    "react-transform-catch-errors": "^1.0.2",
+    "react-transform-hmr": "^1.0.2",
+    "redbox-react": "^1.2.2",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.7.1"
+  },
+  "dependencies": {
+    "auth0-js": "^7.4.0",
+    "autoprefixer": "^6.0.2",
+    "babel-polyfill": "^6.5.0",
+    "better-npm-run": "0.0.11",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.15.2",
+    "classnames": "^2.2.5",
+    "config": "^1.26.2",
+    "contentful": "^3.7.0",
+    "cookie-parser": "^1.4.3",
+    "css-loader": "^0.25.0",
+    "express": "^4.12.3",
+    "express-session": "^1.14.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "flag-icon-css": "^2.8.0",
+    "history": "^3.0.0",
+    "html-webpack-plugin": "^2.9.0",
+    "import": "0.0.6",
+    "isomorphic-fetch": "^2.2.1",
+    "json-loader": "^0.5.4",
+    "jwt-decode": "^2.1.0",
+    "knex": "^0.12.7",
+    "lodash": "^4.5.0",
+    "marked": "^0.3.6",
+    "material-ui": "^0.16.7",
+    "memory-cache": "^0.1.6",
+    "moment": "^2.18.1",
+    "morgan": "^1.7.0",
+    "node-fetch": "^1.6.3",
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pg": "^6.1.2",
+    "postcss-loader": "^0.13.0",
+    "postcss-nested": "^1.0.0",
+    "pui-react-tabs": "^7.3.1",
+    "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.3.2",
+    "react-addons-update": "^15.3.2",
+    "react-dev-utils": "^0.3.0",
+    "react-dom": "^15.4.2",
+    "react-event-listener": "^0.4.0",
+    "react-helmet": "^3.3.0",
+    "react-imageloader": "^2.1.0",
+    "react-intl": "^2.2.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^3.0.2",
+    "react-router-scroll": "^0.4.1",
+    "react-scroll": "^1.4.5",
+    "react-scrollchor": "^2.2.0",
+    "react-tabs": "^0.8.2",
+    "react-tap-event-plugin": "^2.0.1",
+    "redis": "^2.6.3",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.7.0",
+    "redux-saga": "^0.12.0",
+    "redux-thunk": "^2.1.0",
+    "reduxsauce": "^0.2.0",
+    "reflexbox": "^2.2.2",
+    "request": "^2.79.0",
+    "request-promise": "^4.2.0",
+    "resolve-url-loader": "^1.6.0",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^4.0.2",
+    "socket.io": "^1.7.1",
+    "socket.io-client": "^1.6.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "whatwg-fetch": "^1.0.0",
+    "winston": "^2.3.1",
+    "xml-loader": "^1.1.0"
+  }
+}

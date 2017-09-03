@@ -1,0 +1,19 @@
+import { createTypes } from 'reduxsauce';
+
+export default createTypes(`
+  LOGIN_REQUEST
+  LOGIN_SUCCESS
+  LOGIN_FAILURE
+  
+  LOGOUT_SUCCESS
+  
+  FETCH_BIDDING_INFO
+  FETCH_BIDDING_SUCCESS
+  
+  FETCH_GALLERY_INFO
+  FETCH_GALLERY_SUCCESS
+  
+  UPSERT_LOGIN_REQUEST
+  POST_BID_REQ
+  
+`);
