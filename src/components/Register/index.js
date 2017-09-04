@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import Auth from '../../api/auth';
+import Header from '../Header';
 
 class Register extends Component {
   constructor(props, context) {
@@ -47,15 +48,7 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <div className="row" style={{ backgroundColor: 'green', marginBottom: '10px' }}>
-          <div className="container">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px' }} >
-              <div>
-                <h1>Bidding App</h1>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Header />
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-md-offset-3">

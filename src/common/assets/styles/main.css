@@ -367,3 +367,7 @@ body{
   height: 150px;
   margin-top: 10px;
 }
+
+.lightboxHover {
+  cursor: pointer;
+}
