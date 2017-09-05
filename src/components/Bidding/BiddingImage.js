@@ -32,7 +32,7 @@ class BiddingImage extends Component {
           const biddingItem = nextProps.biddingItems.find(x => get(x, 'object_id') === galleryItem.id);
           return {
             ...galleryItem,
-            bidPrice: biddingItem ? biddingItem.price : 0,
+            bidPrice: biddingItem ? biddingItem.price : galleryItem.base_price,
           };
         });
 
@@ -110,7 +110,7 @@ class BiddingImage extends Component {
                         </a>
                         <div className="caption">
                           <h3>{item.owner}</h3>
-                          <p>{item.bidPrice}</p>
+                          { item.bidPrice === item.base_price ? <p>{item.bidPrice}</p> : <p><i>{item.bidPrice}</i></p>}
                         </div>
                       </div>
                     </LightboxTrigger>
@@ -175,7 +175,7 @@ class BiddingImage extends Component {
                           </a>
                           <div className="caption">
                             <h3>{item.owner}</h3>
-                            <p>{item.bidPrice}</p>
+                            { item.bidPrice === item.base_price ? <p>{item.bidPrice}</p> : <p><i>{item.bidPrice}</i></p>}
                           </div>
                         </div>
                       </LightboxTrigger>
