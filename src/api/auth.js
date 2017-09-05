@@ -9,7 +9,7 @@ class AuthService {
       clientID: AUTH0_CLIENT_ID,
       domain: AUTH_DOMAIN,
       responseType: 'token',
-      callbackURL: `${window.location.origin}/`,
+      callbackURL: `${window.location.origin}/login`,
     });
 
     this.login = this.login.bind(this);
