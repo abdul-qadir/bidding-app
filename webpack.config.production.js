@@ -46,10 +46,17 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css!sass'),
       },
       {
-        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        test: /\.(ico)(\?.*)?$/,
         loader: 'file',
         query: {
           name: 'images/[name].[ext]',
+        },
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        loader: 'file',
+        query: {
+          name: 'images/gallery/[name].[ext]',
         },
       },
     ],

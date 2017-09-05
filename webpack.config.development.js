@@ -68,6 +68,13 @@ module.exports = {
           name: 'static/images/[name].[ext]',
         },
       },
+      {
+        test: /\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        loader: 'file',
+        query: {
+          name: 'static/images/gallery/[name].[ext]',
+        },
+      },
     ],
   },
   _hotPort: 8000,
