@@ -1,6 +1,7 @@
 const http = require('http');
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
@@ -12,15 +13,7 @@ require('./server/bidding')(app);
 require('./server/gallery')(app);
 require('./server/user')(app);
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-    res.redirect(['https://', req.get('Host'), req.url].join(''));
-  } else {
-    next();
-  }
-});
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'dist')));
 

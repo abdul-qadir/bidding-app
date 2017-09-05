@@ -2,6 +2,7 @@ const http = require('http');
 const express = require('express');
 const path = require('path');
 const webpack = require('webpack');
+const cors = require('cors');
 const config = require('./webpack.config.development');
 const common = require('./server/common');
 
@@ -33,16 +34,7 @@ require('./server/bidding')(app);
 require('./server/gallery')(app);
 require('./server/user')(app);
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  /**if (req.headers['x-forwarded-proto'] !== 'https') {
-    res.redirect(['https://', req.get('Host'), req.url].join(''));
-  } else {
-    next();
-  }**/
-  next();
-});
+app.use(cors());
 
 app.get('*', (req, res) => {
   res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
