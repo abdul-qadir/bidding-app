@@ -18,7 +18,7 @@ class ResetPassword extends Component {
 
   getAuthParams = () => ({
     connection: 'Username-Password-Authentication',
-    responseType: 'token',
+    clientID: AUTH0_CLIENT_ID,
     email: this.state.username,
     state: `${this.props.location.query.return_to}`,
   });
@@ -40,7 +40,7 @@ class ResetPassword extends Component {
 
   doResetPassword() {
     AuthService.resetPassword(this.getAuthParams(), (err) => {
-      if (err) console.log(err.message);
+      if (err) alert(err.message);
     });
   }
 

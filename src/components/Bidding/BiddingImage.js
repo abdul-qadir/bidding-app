@@ -151,7 +151,7 @@ class BiddingImage extends Component {
                             <input type="text" className="form-control" id="myBid" placeholder="INR" value={this.state.myBid} onChange={e => this.handleChange(e)} />
                           </div>
                           <div className="col-sm-3">
-                            <button className="btn btn-danger btn-sm" type="submit" onSubmit={() => this.validateSubmit()}>Submit</button>
+                            <button className="btn btn-danger btn-sm" type="submit" onClick={() => this.validateSubmit()}>Submit</button>
                           </div>
                         </div>
                       </div>
