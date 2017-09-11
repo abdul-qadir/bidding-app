@@ -95,9 +95,6 @@ class BiddingImage extends Component {
     if (this.state.loading === true) {
       return <Spinner />;
     }
-    if (this.props.refresh) {
-      console.log('test');
-    }
     return (
       <div className="container gallery-container">
         {this.props.refresh ? <div className="refreshMsg" >Highesh Bid Price might have been updated. Please try again with higher value than current bid price.</div> : null }
