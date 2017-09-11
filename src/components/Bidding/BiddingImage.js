@@ -73,18 +73,18 @@ class BiddingImage extends Component {
 
   handleKeyPress(e) {
     if (e.charCode === 13) {
-      this.validateSubmit();
+      // this.validateSubmit();
     }
   }
 
   validateSubmit() {
     event.preventDefault();
-    this.setState({ loading: true });
-    if (this.state.basePrice < this.state.myBid && this.state.price < this.state.myBid) {
+    if (!this.state.loading && this.state.basePrice < this.state.myBid && this.state.price < this.state.myBid) {
+      this.setState({ loading: true });
       this.props.postBidding(this.state.objectId, this.state.myBid, this.state.bidId);
       this.setState({ loading: false, myBid: '' });
-      browserHistory.push('/');
       document.getElementById('lightbox-Btn-Cls').click();
+      // browserHistory.push('/');
     } else {
       this.setState({ loading: false });
       alert('Please enter price greater than base Price and last bidded price(if any) ');
@@ -152,7 +152,7 @@ class BiddingImage extends Component {
                             <input type="text" className="form-control" id="myBid" placeholder="INR" value={this.state.myBid} onChange={e => this.handleChange(e)} />
                           </div>
                           <div className="col-sm-3">
-                            <button className="btn btn-danger btn-sm" type="submit" onClick={() => this.validateSubmit()}>Submit</button>
+                            <button className="btn btn-danger btn-sm" type="submit" onClick={this.validateSubmit}>Submit</button>
                           </div>
                         </div>
                       </div>
@@ -217,7 +217,7 @@ class BiddingImage extends Component {
                               <input type="text" className="form-control" id="myBid" placeholder="INR" value={this.state.myBid} onChange={e => this.handleChange(e)} />
                             </div>
                             <div className="col-sm-3">
-                              <button className="btn btn-danger btn-sm" type="submit" onClick={() => this.validateSubmit()}>Submit</button>
+                              <button className="btn btn-danger btn-sm" type="submit" onClick={this.validateSubmit}>Submit</button>
                             </div>
                           </div>
 

@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
       currentUserId = userId;
       return postBiddingItem(biddingObj, userId);
     })
-    .then((result) => { if (result === 1) { return postBiddingUsers(biddingObj, currentUserId); } upsertFail = true; return upsertFail; })
+    .then((result) => { if (result === 0) { upsertFail = true; return upsertFail; } return postBiddingUsers(biddingObj, currentUserId); })
     .then(() => sendBiddingItems())
     .then((result) => { const obj = Object.assign({}, { result, refresh: upsertFail }); return res.status(200).send(obj); })
     .catch(err => common.handleError(err, res));
