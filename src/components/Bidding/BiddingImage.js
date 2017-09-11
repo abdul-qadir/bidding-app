@@ -100,7 +100,7 @@ class BiddingImage extends Component {
     }
     return (
       <div className="container gallery-container">
-        {this.props.refresh ? <div className="refreshMsg" >Please try again with high value than current bid price.</div> : null }
+        {this.props.refresh ? <div className="refreshMsg" >Highesh Bid Price might have been updated. Please try again with higher value than current bid price.</div> : null }
         <div className="tz-gallery">
           <div className="topBidder">
             <div className="col-sm-6 col-md-12">
