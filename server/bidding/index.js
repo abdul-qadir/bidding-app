@@ -26,9 +26,8 @@ function postBiddingItem(biddingObj, userId) {
       .where('price', '<', biddingObj.price)
       .update(biddingObject);
   }
-  /**
   return common.postgresService.knex('bidding_winner')
-      .insert(biddingObject);**/
+      .insert(biddingObject);
 }
 
 function postBiddingUsers(biddingObj, userId) {
@@ -43,21 +42,22 @@ function postBiddingUsers(biddingObj, userId) {
 router.get('/', (req, res) => {
   common.getUserId(req)
     .then(() => sendBiddingItems())
-    .then(result => res.status(200).send(result))
+    .then((result) => { const obj = Object.assign({}, { result, refresh: false }); return res.status(200).send(obj); })
     .catch(err => common.handleError(err, res));
 });
 
 router.post('/', (req, res) => {
   const biddingObj = req.body;
   let currentUserId = null;
+  let upsertFail = false;
   common.getUserId(req)
     .then((userId) => {
       currentUserId = userId;
       return postBiddingItem(biddingObj, userId);
     })
-    .then((result) => { if (result === 1) { return postBiddingUsers(biddingObj, currentUserId); } return -1; })
+    .then((result) => { if (result === 1) { return postBiddingUsers(biddingObj, currentUserId); } upsertFail = true; return upsertFail; })
     .then(() => sendBiddingItems())
-    .then(result => res.status(200).send(result))
+    .then((result) => { const obj = Object.assign({}, { result, refresh: upsertFail }); return res.status(200).send(obj); })
     .catch(err => common.handleError(err, res));
 });
 

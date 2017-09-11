@@ -50,7 +50,7 @@ const fetchProfileSuccess = ((state = INITIAL_STATE, action) => {
  **/
 
 const fetchBiddingSuccess = (state = INITIAL_STATE, action) => (
-    { ...state, biddingItems: get(action, 'items', []), ...state.biddingItems }
+    { ...state, biddingItems: get(action, 'items', []), refresh: get(action, 'refresh', false) }
   );
 
 const fetchGallerySuccess = (state = INITIAL_STATE, action) => (

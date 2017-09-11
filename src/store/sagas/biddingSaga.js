@@ -6,7 +6,8 @@ import Types from './../../actions/actionTypes';
 
 function* fetchBiddingItemsSaga() {
   const response = yield call(fetchBiddingItems);
-  yield put({ type: Types.FETCH_BIDDING_SUCCESS, items: response });
+  console.log(response);
+  yield put({ type: Types.FETCH_BIDDING_SUCCESS, items: response.result, refresh: response.refresh });
 }
 
 function* fetchGalleryItemsSaga() {
@@ -16,7 +17,7 @@ function* fetchGalleryItemsSaga() {
 
 function* postBidSaga(action) {
   const response = yield call(postBid, action.objectId, action.myBid, action.bidId);
-  yield put({ type: Types.FETCH_BIDDING_SUCCESS, items: response });
+  yield put({ type: Types.FETCH_BIDDING_SUCCESS, items: response.result, refresh: response.refresh });
 }
 
 export default function* apiSaga() {

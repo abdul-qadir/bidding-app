@@ -95,8 +95,12 @@ class BiddingImage extends Component {
     if (this.state.loading === true) {
       return <Spinner />;
     }
+    if (this.props.refresh) {
+      console.log('test');
+    }
     return (
       <div className="container gallery-container">
+        {this.props.refresh ? <div className="refreshMsg" >Please try again with high value than current bid price.</div> : null }
         <div className="tz-gallery">
           <div className="topBidder">
             <div className="col-sm-6 col-md-12">
@@ -239,11 +243,14 @@ BiddingImage.propTypes = {
   postBidding: PropTypes.func,
   galleryItems: PropTypes.arrayOf(PropTypes.shape({})),
   biddingItems: PropTypes.arrayOf(PropTypes.shape({})),
+  refresh: PropTypes.bool,
+
 };
 
 const mapStateToProps = state => ({
   biddingItems: state.app.biddingItems,
   galleryItems: state.app.gallery,
+  refresh: state.app.refresh,
 });
 
 const mapDispatchToProps = dispatch => ({
