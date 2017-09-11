@@ -23,10 +23,12 @@ function postBiddingItem(biddingObj, userId) {
   if (biddingObj.bidId) {
     return common.postgresService.knex('bidding_winner')
       .where('object_id', biddingObj.objectId)
+      .where('price', '<', biddingObj.price)
       .update(biddingObject);
   }
+  /**
   return common.postgresService.knex('bidding_winner')
-      .insert(biddingObject);
+      .insert(biddingObject);**/
 }
 
 function postBiddingUsers(biddingObj, userId) {
@@ -53,7 +55,7 @@ router.post('/', (req, res) => {
       currentUserId = userId;
       return postBiddingItem(biddingObj, userId);
     })
-    .then(() => postBiddingUsers(biddingObj, currentUserId))
+    .then((result) => { if (result === 1) { return postBiddingUsers(biddingObj, currentUserId); } return -1; })
     .then(() => sendBiddingItems())
     .then(result => res.status(200).send(result))
     .catch(err => common.handleError(err, res));
