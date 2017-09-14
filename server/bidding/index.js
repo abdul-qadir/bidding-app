@@ -25,9 +25,10 @@ function postBiddingItem(biddingObj, userId) {
       .where('object_id', biddingObj.objectId)
       .where('price', '<', biddingObj.price)
       .update(biddingObject);
-  }
-  return common.postgresService.knex('bidding_winner')
+  } else {
+    return common.postgresService.knex('bidding_winner')
       .insert(biddingObject);
+  }
 }
 
 function postBiddingUsers(biddingObj, userId) {
